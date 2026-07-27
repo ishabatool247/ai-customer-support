@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+openai
+python-dotenv
+SpeechRecognition
+pyttsx3
+jinja2
+python-multipart
+pydub
+sounddevice
+numpy

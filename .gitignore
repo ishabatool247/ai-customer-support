@@ -1,0 +1,25 @@
+# Virtual environment
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Audio files
+*.wav
+*.mp3
+
+# Database
+*.db
+
+# Chainlit generated files
+.chainlit/
+
+# Screenshots
+*.png
+
+# VS Code
+.vscode/
