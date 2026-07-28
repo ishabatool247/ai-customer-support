@@ -5,7 +5,7 @@ A Voice AI Assistant built with Python and FastAPI.
 ## Features
 
 - 🎤 Voice Recognition (Whisper)
-- 🤖 AI Chat (OpenAI GPT-4.1 Mini)
+- 🤖 AI Chat (OpenAI GPT-5 Nano)
 - 🔊 Text-to-Speech
 - 🌐 Open Websites
 - 💻 Open Applications
@@ -35,7 +35,13 @@ A Voice AI Assistant built with Python and FastAPI.
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/voice_ai_assistant.git
+git clone https://github.com/ishabatool247/voice-ai-assistant.git
+```
+
+Go to the project folder:
+
+```bash
+cd voice-ai-assistant
 ```
 
 Install dependencies:
@@ -46,39 +52,48 @@ pip install -r requirements.txt
 
 Create a `.env` file:
 
-```
-OPENAI_API_KEY=your_openai_key
-OPENWEATHER_API_KEY=your_weather_key
+```env
+OPENAI_API_KEY=your_openai_api_key
 ```
 
 Run the project:
 
 ```bash
-uvicorn app:app --reload
+uvicorn main:app --reload
 ```
 
 Open your browser:
 
-```
+```text
 http://127.0.0.1:8000
 ```
 
 ## Project Structure
 
-```
-voice_ai_assistant/
-│── app.py
-│── requirements.txt
-│── .env
-│── templates/
-│── static/
-│── README.md
+```text
+voice-ai-assistant/
+├── app/
+├── static/
+├── templates/
+├── database.py
+├── main.py
+├── ui.py
+├── voice.py
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
 ## Screenshots
 
-Add screenshots here after running the project.
+Coming soon...
 
+## License
+
+This project is for learning and educational purposes.
+## Author
+
+Isha Batool
 ## Author
 
 Isha Batool
