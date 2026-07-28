@@ -1,29 +1,51 @@
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const status = document.getElementById("status");
+const chatBox = document.getElementById("chatBox");
 
-const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+
+const recognition = new (
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition
+);
+
 
 recognition.lang = "en-US";
 recognition.interimResults = false;
 recognition.continuous = false;
 
+
+// Start voice
 startBtn.onclick = () => {
+
     recognition.start();
+
     status.innerText = "🎤 Listening...";
+
 };
 
+
+// Stop voice
 stopBtn.onclick = () => {
+
     recognition.stop();
-    status.innerText = "Stopped.";
+
+    status.innerText = "🛑 Stopped.";
+
 };
 
+
+// When user speaks
 recognition.onresult = async (event) => {
 
     const text = event.results[0][0].transcript;
 
-    status.innerHTML =
-        "<b>You:</b> " + text + "<br><br>Thinking...";
+
+    status.innerText = "🤔 Thinking...";
+
+
+    addMessage("You", text);
+
 
     const response = await fetch("/chat", {
 
@@ -39,13 +61,41 @@ recognition.onresult = async (event) => {
 
     });
 
+
     const data = await response.json();
 
-    status.innerHTML =
-        "<b>You:</b> " + text +
-        "<br><br><b>AI:</b> " + data.reply;
 
-    const speech = new SpeechSynthesisUtterance(data.reply);
+    addMessage("AI", data.reply);
+
+
+    status.innerText = "✅ Ready";
+
+
+    const speech = new SpeechSynthesisUtterance(
+        data.reply
+    );
+
 
     speechSynthesis.speak(speech);
+
 };
+
+
+// Add chat messages
+function addMessage(sender, message) {
+
+    const div = document.createElement("div");
+
+    div.className = "message";
+
+
+    div.innerHTML =
+        "<b>" + sender + ":</b> " + message;
+
+
+    chatBox.appendChild(div);
+
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+}

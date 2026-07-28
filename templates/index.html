@@ -1,31 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Voice AI Assistant</title>
 
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
-    <link rel="stylesheet" href="/static/style.css">
 
 <div class="container">
 
-    <h1>🎤 Voice AI Assistant</h1>
+    <div class="header">
+        <h1>🎤 Voice AI Assistant</h1>
+        <p>Your personal AI voice companion</p>
+    </div>
 
-    <p>Welcome to your FastAPI Voice Assistant.</p>
 
-    <button id="startBtn">🎤 Start Talking</button>
-    <button id="stopBtn">🛑 Stop</button>
+    <div class="assistant-card">
 
-    <p id="status">Press Start to talk.</p>
+        <div class="robot">
+            🤖
+        </div>
 
-    <div id="chatBox"></div>
+        <h2>Ready to help</h2>
+
+        <p id="status">
+            Press Start to talk.
+        </p>
+
+
+        <div class="buttons">
+
+            <button id="startBtn" class="start">
+                🎤 Start Talking
+            </button>
+
+            <button id="stopBtn" class="stop">
+                🛑 Stop
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="chat-container">
+
+        <h3>💬 Conversation</h3>
+
+        <div id="chatBox">
+        </div>
+
+    </div>
+
 
 </div>
 
+
 <script src="/static/script.js"></script>
+
 </body>
-</head>
+
 </html>
