@@ -21,6 +21,7 @@ startBtn.onclick = () => {
     recognition.start();
 
     status.innerText = "🎤 Listening...";
+    status.className = "listening";
 
 };
 
@@ -42,6 +43,7 @@ recognition.onresult = async (event) => {
 
 
     status.innerText = "🤔 Thinking...";
+    status.className = "thinking";
 
 
     addMessage("You", text);
@@ -69,6 +71,7 @@ recognition.onresult = async (event) => {
 
 
     status.innerText = "✅ Ready";
+    status.className = "";
 
 
     const speech = new SpeechSynthesisUtterance(

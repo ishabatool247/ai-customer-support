@@ -1,116 +1,367 @@
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
+
 
 body {
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, #111827, #1e3a8a);
+    background:
+        radial-gradient(circle at top, #2563eb, transparent 40%),
+        linear-gradient(135deg, #020617, #0f172a);
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     color: white;
 }
 
 
 .container {
     width: 90%;
-    max-width: 700px;
+    max-width: 750px;
     text-align: center;
 }
 
 
+/* Header */
+
 .header h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+    font-size: 46px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
 }
 
 
 .header p {
-    color: #d1d5db;
+    color: #cbd5e1;
     font-size: 18px;
 }
 
 
-.assistant-card {
-    margin-top: 30px;
-    background: rgba(255,255,255,0.1);
-    padding: 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
+
+/* Main AI Card */
+
+.assistant-card,
+.chat-container {
+
+    margin-top: 25px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.3);
 }
 
+
+
+/* AI Robot */
 
 .robot {
-    font-size: 70px;
+
+    font-size: 80px;
+
+    animation: float 3s infinite ease-in-out;
+
 }
+
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
 
 
 .assistant-card h2 {
-    margin: 10px 0;
+
+    font-size: 28px;
+
+    margin: 15px 0;
+
 }
 
+
+
+/* Status */
 
 #status {
-    color: #93c5fd;
-    font-size: 18px;
+
+    color: #60a5fa;
+
+    font-size: 19px;
+
+    font-weight: 500;
+
 }
 
 
+
+/* Buttons */
+
 .buttons {
-    margin-top: 25px;
+
+    margin-top: 30px;
+
 }
 
 
 button {
+
     border: none;
-    padding: 14px 25px;
-    margin: 8px;
-    border-radius: 30px;
-    font-size: 16px;
+
+    padding: 15px 32px;
+
+    margin: 10px;
+
+    border-radius: 50px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
     cursor: pointer;
-    transition: 0.3s;
+
+    transition: all .3s ease;
+
+}
+/* AI Listening Animation */
+
+.listening {
+
+    animation: pulse 1.2s infinite;
+
+    color: #22c55e !important;
+
+}
+
+
+@keyframes pulse {
+
+    0% {
+
+        text-shadow:
+        0 0 5px #22c55e;
+
+    }
+
+
+    50% {
+
+        text-shadow:
+        0 0 25px #22c55e;
+
+    }
+
+
+    100% {
+
+        text-shadow:
+        0 0 5px #22c55e;
+
+    }
+
+}
+
+
+
+/* Thinking Animation */
+
+.thinking {
+
+    animation: thinking 1s infinite;
+
+    color: #facc15 !important;
+
+}
+
+
+
+@keyframes thinking {
+
+    50% {
+
+        opacity:0.4;
+
+    }
+
 }
 
 
 .start {
-    background: #22c55e;
-    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+
+    color:white;
+
 }
+
 
 
 .stop {
-    background: #ef4444;
-    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #ef4444,
+        #dc2626
+    );
+
+    color:white;
+
 }
+
 
 
 button:hover {
-    transform: scale(1.05);
+
+    transform: translateY(-4px) scale(1.05);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.4);
+
 }
 
 
-.chat-container {
-    margin-top: 25px;
-    background: rgba(255,255,255,0.1);
-    padding: 20px;
-    border-radius: 20px;
+
+/* Chat */
+
+.chat-container h3 {
+
+    font-size: 22px;
+
 }
+
 
 
 #chatBox {
-    min-height: 150px;
-    max-height: 300px;
+
+    min-height: 160px;
+
+    max-height: 350px;
+
     overflow-y: auto;
-    margin-top: 15px;
-    text-align: left;
+
+    margin-top:20px;
+
+    padding:10px;
+
 }
 
 
+
+/* Chat Messages */
 .message {
-    background: rgba(255,255,255,0.15);
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 12px;
+
+    max-width: 80%;
+
+    padding: 14px 18px;
+
+    margin: 12px 0;
+
+    border-radius: 20px;
+
+    animation: show .3s ease;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+}
+
+
+/* User message */
+
+.message b:first-child {
+
+    color: #93c5fd;
+
+}
+
+
+.message:nth-child(odd) {
+
+    background: rgba(37,99,235,0.35);
+
+    margin-left: auto;
+
+    border-bottom-right-radius: 5px;
+
+}
+
+
+
+/* AI message */
+
+.message:nth-child(even) {
+
+    background: rgba(34,197,94,0.25);
+
+    margin-right: auto;
+
+    border-bottom-left-radius: 5px;
+
+}
+
+
+@keyframes show {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .header h1 {
+
+        font-size:32px;
+
+    }
+
+
+    button {
+
+        width:90%;
+
+    }
+
 }
