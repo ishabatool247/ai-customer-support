@@ -20,7 +20,6 @@ def home(request: Request):
 class ChatRequest(BaseModel):
     message: str
 
-
 @router.post("/chat")
 def chat(data: ChatRequest):
     reply = ask_ai(data.message)

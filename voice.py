@@ -321,7 +321,6 @@ while True:
           print(f"\nAI: {answer}")
           speak(answer)
           continue
-
         if (
         "shutdown computer" in user_text.lower()
          or "shut down computer" in user_text.lower()
