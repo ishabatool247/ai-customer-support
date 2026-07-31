@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Customer Support</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="chat-app">
+
+    <div class="chat-header">
+
+        <div class="profile">
+            🤖
+        </div>
+
+        <div>
+            <h3>AI Support Agent</h3>
+            <span>🟢 Online</span>
+        </div>
+
+    </div>
+
+
+    <div id="chat-box">
+
+        <div class="message bot">
+            <div class="bubble">
+                Hello 👋<br>
+                How can I help you today?
+            </div>
+        </div>
+
+    </div>
+<div class="input-area">
+
+    <button class="clear-btn" onclick="clearChat()">
+        🗑
+    </button>
+
+    <input 
+    id="message"
+    placeholder="Type a message..."
+    onkeypress="handleKey(event)"
+    >
+
+    <button onclick="sendMessage()">
+        ➤
+    </button>
+
+</div>
+
+</div>
+
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

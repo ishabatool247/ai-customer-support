@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Virtual environment
 .venv/
 
@@ -23,3 +24,10 @@ __pycache__/
 
 # VS Code
 .vscode/
+=======
+.venv/
+__pycache__/
+.env
+chroma_db/
+*.pyc
+>>>>>>> 71787d0 (Final AI Customer Support Agent version)

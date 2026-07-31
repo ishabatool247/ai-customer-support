@@ -1,0 +1,244 @@
+*{
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+body{
+
+    margin:0;
+    height:100vh;
+
+    background:#e5ddd5;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+
+.chat-app{
+
+    width:450px;
+    height:90vh;
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+}
+
+
+
+.chat-header{
+
+    background:#075e54;
+
+    color:white;
+
+    padding:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+
+.profile{
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+}
+
+
+
+.chat-header h3{
+
+    margin:0;
+
+}
+
+
+.chat-header span{
+
+    font-size:13px;
+
+}
+
+
+
+#chat-box{
+
+    flex:1;
+
+    padding:20px;
+
+    overflow-y:auto;
+
+    background:#efeae2;
+
+}
+
+
+
+.message{
+
+    display:flex;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.bot{
+
+    justify-content:flex-start;
+
+}
+
+
+
+.user{
+
+    justify-content:flex-end;
+
+}
+
+
+
+.bubble{
+
+    max-width:75%;
+
+    padding:12px 15px;
+
+    border-radius:10px;
+
+    line-height:1.5;
+
+}
+
+
+
+.bot .bubble{
+
+    background:white;
+
+    border-radius:10px 10px 10px 0;
+
+}
+
+
+
+.user .bubble{
+
+    background:#dcf8c6;
+
+    border-radius:10px 10px 0 10px;
+
+}
+
+
+
+.input-area{
+
+    display:flex;
+
+    padding:12px;
+
+    background:#f0f0f0;
+
+}
+
+
+
+input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    padding:12px;
+
+    border-radius:25px;
+
+    font-size:15px;
+
+}
+
+
+
+button{
+
+    margin-left:10px;
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#075e54;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+.clear-btn{
+
+    background:#dc2626;
+
+    margin-right:10px;
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    color:white;
+
+    border:none;
+
+    cursor:pointer;
+
+}
+
+
+.clear-btn:hover{
+
+    background:#b91c1c;
+
+}
