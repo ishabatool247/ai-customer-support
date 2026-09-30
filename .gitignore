@@ -1,33 +1,42 @@
-<<<<<<< HEAD
-# Virtual environment
-.venv/
-
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
 
 # Environment variables
 .env
+
+# Django
+db.sqlite3
+staticfiles/
+
+# Chroma database
+chroma_db/
+
+# Node.js
+node_modules/
+.next/
+dist/
+
+# Chainlit
+.chainlit/
 
 # Audio files
 *.wav
 *.mp3
 
-# Database
-*.db
-
-# Chainlit generated files
-.chainlit/
-
 # Screenshots
 *.png
 
-# VS Code
+# IDE
 .vscode/
-=======
-.venv/
-__pycache__/
-.env
-chroma_db/
-*.pyc
->>>>>>> 71787d0 (Final AI Customer Support Agent version)
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

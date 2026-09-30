@@ -1,34 +1,45 @@
-from fastapi import FastAPI, Request
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from chatbot import ask_ai
+from app.ai import ask_ai
 
 
 app = FastAPI(
-    title="AI Customer Support Agent"
+    title="AI Customer Support Agent",
+    version="1.0.0"
 )
 
 
-# Frontend files
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-templates = Jinja2Templates(directory="templates")
+# Allow Next.js frontend to communicate with FastAPI
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class ChatRequest(BaseModel):
     message: str
 
-@app.get("/", response_class=HTMLResponse)
-def home(request: Request):
-    return templates.TemplateResponse(
-        request=request,
-        name="index.html"
-    )
 
-# Chat API
+@app.get("/")
+def home():
+    return {
+        "status": "online",
+        "message": "AI Customer Support Agent API is running"
+    }
+
+
+@app.get("/health")
+def health():
+    return {
+        "status": "healthy"
+    }
+
+
 @app.post("/chat")
 def chat(request: ChatRequest):
 

@@ -1,17 +1,12 @@
-
 import os
-from pathlib import Path
-
 from dotenv import load_dotenv
+
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
 
-
-# Load .env from app folder
-BASE_DIR = Path(__file__).resolve().parent
-load_dotenv(BASE_DIR / ".env")
+load_dotenv()
 
 
 # Load embeddings
@@ -22,7 +17,7 @@ embeddings = HuggingFaceEmbeddings(
 
 # Load existing Chroma database
 vectorstore = Chroma(
-    persist_directory=str(BASE_DIR / "chroma_db"),
+    persist_directory="chroma_db",
     embedding_function=embeddings
 )
 
@@ -33,11 +28,11 @@ retriever = vectorstore.as_retriever(
 )
 
 
-# Groq LLM
-llm = ChatGroq(
-    model="openai/gpt-oss-20b",
+# OpenAI model
+llm = ChatOpenAI(
+    model="gpt-4.1-mini",
     temperature=0,
-    api_key=os.getenv("GROQ_API_KEY")
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 
@@ -62,3 +57,20 @@ def ask_ai(question: str):
 
     except Exception as e:
         return f"Error: {str(e)}"
+
+
+# Test chatbot directly
+if __name__ == "__main__":
+
+    print("🤖 AI Customer Support Agent Started")
+
+    while True:
+
+        user = input("\nYou: ")
+
+        if user.lower() in ["exit", "quit"]:
+            break
+
+        answer = ask_ai(user)
+
+        print("\nAI:", answer)
