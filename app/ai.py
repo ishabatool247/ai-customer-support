@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 
@@ -9,50 +8,50 @@ from langchain_groq import ChatGroq
 from langchain.chains import RetrievalQA
 
 
-# Load .env from app folder
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 
 
-# Load embeddings
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-)
+qa_chain = None
 
 
-# Load existing Chroma database
-vectorstore = Chroma(
-    persist_directory=str(BASE_DIR / "chroma_db"),
-    embedding_function=embeddings
-)
+def get_qa_chain():
+    global qa_chain
 
+    if qa_chain is None:
+        embeddings = HuggingFaceEmbeddings(
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        )
 
-# Retriever
-retriever = vectorstore.as_retriever(
-    search_kwargs={"k": 3}
-)
+        vectorstore = Chroma(
+            persist_directory=str(BASE_DIR / "chroma_db"),
+            embedding_function=embeddings
+        )
 
+        retriever = vectorstore.as_retriever(
+            search_kwargs={"k": 3}
+        )
 
-# Groq LLM
-llm = ChatGroq(
-    model="openai/gpt-oss-20b",
-    temperature=0,
-    api_key=os.getenv("GROQ_API_KEY")
-)
+        llm = ChatGroq(
+            model="openai/gpt-oss-20b",
+            temperature=0,
+            api_key=os.getenv("GROQ_API_KEY")
+        )
 
+        qa_chain = RetrievalQA.from_chain_type(
+            llm=llm,
+            retriever=retriever,
+            return_source_documents=False
+        )
 
-# RAG chain
-qa_chain = RetrievalQA.from_chain_type(
-    llm=llm,
-    retriever=retriever,
-    return_source_documents=False
-)
+    return qa_chain
 
 
 def ask_ai(question: str):
-
     try:
-        response = qa_chain.invoke(
+        chain = get_qa_chain()
+
+        response = chain.invoke(
             {
                 "query": question
             }
